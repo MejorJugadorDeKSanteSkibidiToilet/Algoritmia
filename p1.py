@@ -107,13 +107,24 @@ def dataprep_rle(n):
         
     return lst
     pass
-print(f"dataprep_rle (Ni idea de si esto sirve): {dataprep_rle(N)}")
+a = dataprep_rle(N)
+print(f"dataprep_rle (Ni idea de si esto sirve): {a}")
 # I.B.1 RLE Naive / Ingenuo
 def rle_encode_naive(lst):
     """Codificación RLE utilizando operador + concatenador de listas."""
-    
-    pass
+    num = 1
+    ret = []
+    for i in range(len(lst)-1):
+        
+        if lst[i] == lst[i+1]:
+            num+=1
+        else:
+            ret.append((lst[i],num))
+            num = 1
+    return ret
 
+    pass
+print(f"rle_encode_naive: {rle_encode_naive(a)}")
 # I.B.2 RLE Optimized / Óptimo
 def rle_encode_optimized(lst):
     """Codificación RLE optimizada usando append in-place."""
