@@ -1,7 +1,8 @@
 import time # Para la función time_measure. Entender código dado.
 #import matplotlib.pyplot as plt # Para imprimir gráficas. Entender código dado.
 import random # Puede usarse random.randint(n, m) para generar listas aleatorias de enteros en las funciones dataprep.
-
+#cambiar para probar
+N = 10
 # I.A.1 Medición de tiempos de ejecución
 def time_measure(f, dataprep, Nlist, Nrep=1000, Nstat=100):
     """Mide la media y varianza del tiempo de ejecución de la función f
@@ -78,7 +79,7 @@ def dataprep_sum_pair_hit(n):
     nums = random.sample(lst, 2)
     return (lst, nums[0]+nums[1])
     pass 
-print(f"sum pair hit: {dataprep_sum_pair_hit(2)}")
+print(f"dataprep sum pair hit: {dataprep_sum_pair_hit(N)}")
 def dataprep_sum_pair_miss(n):
     """Genera un caso donde NO existe ningún par (Caso peor).
     Devuelve una tupla (lista, target)
@@ -89,16 +90,28 @@ def dataprep_sum_pair_miss(n):
         rand = random.randint(1,100)
     return (lst, rand)
     pass
-print(f"sum pair miss: {dataprep_sum_pair_miss(2)}")
+print(f"dataprep sum pair miss: {dataprep_sum_pair_miss(N)}")
 def dataprep_rle(n):
     """Genera una lista con rachas repetidas de dimensión n.
     Devuelve una lista.
     """
+    lst = []
+    types = ['A', 'B', 'C', 'D'] 
+    """He puesto esto pq ni idea de que poner^"""
+    
+    while len(lst) < n:
+        rand = random.choice(types)
+        # Longitud de la racha (cuidando no pasarnos de n)
+        largo_racha = random.randint(1, min(10, n - len(lst))) 
+        lst.extend([rand] * largo_racha)
+        
+    return lst
     pass
-
+print(f"dataprep_rle (Ni idea de si esto sirve): {dataprep_rle(N)}")
 # I.B.1 RLE Naive / Ingenuo
 def rle_encode_naive(lst):
     """Codificación RLE utilizando operador + concatenador de listas."""
+    
     pass
 
 # I.B.2 RLE Optimized / Óptimo
